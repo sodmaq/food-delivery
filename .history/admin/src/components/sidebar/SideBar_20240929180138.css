@@ -27,8 +27,5 @@
   transition: 0.2s;
 }
 
-@media screen and (max-width: 900px) {
-  .sidebar-option p {
-    display: none;
-  }
+@media screen and (max-width: ) {
 }

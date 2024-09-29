@@ -28,7 +28,7 @@
 }
 
 @media screen and (max-width: 900px) {
-  .sidebar-option p {
+  .sidebar {
     display: none;
   }
 }

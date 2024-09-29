@@ -4,12 +4,3 @@
   align-items: center;
   padding: 8px 4%;
 }
-
-.navbar .logo {
-  width: 150px;
-}
-
-.navbar .profile {
-  width: 40px;
-  cursor: pointer;
-}
