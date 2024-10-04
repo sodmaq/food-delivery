@@ -4,16 +4,7 @@ import { useState } from "react";
 
 const Add = () => {
   const [image, setImage] = useState(false);
-  const [data, setData] = useState({
-    name: "",
-    description: "",
-    category: "salad",
-    price: "",
-  });
-
-  const onChangeHandler = (e) => {
-    setData({ ...data, [e.target.name]: e.target.value });
-  };
+  const [data, setData] = useState({});
   return (
     <div className="add">
       <form action="" className="flex-col">
@@ -35,13 +26,7 @@ const Add = () => {
         </div>
         <div>
           <p>product name</p>
-          <input
-            onChange={onChangeHandler}
-            value={data.name}
-            type="text"
-            name="name"
-            placeholder="type here"
-          />
+          <input type="text" name="name" placeholder="type here" />
         </div>
         <div className="add-product-description flex-col">
           <p>Description</p>

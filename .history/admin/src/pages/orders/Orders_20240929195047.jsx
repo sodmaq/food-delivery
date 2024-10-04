@@ -1,4 +1,4 @@
-import "./Orders.css";
+import "./Order.css";
 
 const Order = () => {
   return <div>Order</div>;

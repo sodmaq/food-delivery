@@ -1,47 +1,20 @@
 import { assets } from "../../assets/assets";
 import "./Add.css";
-import { useState } from "react";
 
 const Add = () => {
-  const [image, setImage] = useState(false);
-  const [data, setData] = useState({
-    name: "",
-    description: "",
-    category: "salad",
-    price: "",
-  });
-
-  const onChangeHandler = (e) => {
-    setData({ ...data, [e.target.name]: e.target.value });
-  };
   return (
     <div className="add">
       <form action="" className="flex-col">
         <div className="add-img-upload flex-col">
           <p>Upload Image</p>
           <label htmlFor="image">
-            <img
-              src={image ? URL.createObjectURL(image) : assets.add_icon}
-              alt=""
-            />
+            <img src={assets.upload_area} alt="" />
           </label>
-          <input
-            onChange={(e) => setImage(e.target.files[0])}
-            type="file"
-            id="image"
-            hidden
-            required
-          />
+          <input type="file" id="image" hidden required />
         </div>
         <div>
           <p>product name</p>
-          <input
-            onChange={onChangeHandler}
-            value={data.name}
-            type="text"
-            name="name"
-            placeholder="type here"
-          />
+          <input type="text" name="name" placeholder="type here" />
         </div>
         <div className="add-product-description flex-col">
           <p>Description</p>
@@ -69,13 +42,9 @@ const Add = () => {
           </div>
           <div className="add-price flex-col">
             <p>product price</p>
-            <input type="number" name="price" placeholder="$20" />
+            <input type="number" name="price" placeholder="type here" />
           </div>
         </div>
-
-        <button type="submit" className="add-btn">
-          Submit
-        </button>
       </form>
     </div>
   );

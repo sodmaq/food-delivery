@@ -1,5 +1,5 @@
 import { NavBar } from "./components/NavBar/NavBar";
-import SideBar from "./components/sidebar/SideBar";
+import { SideBar } from "./components/sidebar/SideBar";
 import Add from "./pages/add/Add";
 import Order from "./pages/orders/Orders";
 import List from "./pages/list/List";

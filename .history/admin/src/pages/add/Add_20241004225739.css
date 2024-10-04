@@ -22,23 +22,3 @@
 .add-product-description textarea {
   padding: 10px;
 }
-
-.add-category-price {
-  display: flex;
-  gap: 30px;
-}
-
-.add-category-price select,
-.add-category-price input {
-  padding: 10px;
-  max-width: 120px;
-}
-
-.add-btn {
-  max-width: 120px;
-  border: none;
-  padding: 10px;
-  background-color: black;
-  color: white;
-  cursor: pointer;
-}

@@ -7,13 +7,9 @@ const Add = () => {
   const [data, setData] = useState({
     name: "",
     description: "",
-    category: "salad",
+    category: "",
     price: "",
   });
-
-  const onChangeHandler = (e) => {
-    setData({ ...data, [e.target.name]: e.target.value });
-  };
   return (
     <div className="add">
       <form action="" className="flex-col">
@@ -35,13 +31,7 @@ const Add = () => {
         </div>
         <div>
           <p>product name</p>
-          <input
-            onChange={onChangeHandler}
-            value={data.name}
-            type="text"
-            name="name"
-            placeholder="type here"
-          />
+          <input type="text" name="name" placeholder="type here" />
         </div>
         <div className="add-product-description flex-col">
           <p>Description</p>

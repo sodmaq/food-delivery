@@ -37,7 +37,6 @@ const Add = () => {
           <p>product name</p>
           <input
             onChange={onChangeHandler}
-            value={data.name}
             type="text"
             name="name"
             placeholder="type here"
