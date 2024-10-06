@@ -9,22 +9,11 @@ const List = () => {
 
   const fetchList = async () => {
     const response = await axios.get(`${url}/api/food/list`);
-    const data = response.data;
     console.log(data);
     if (response.status === 200) {
       setList(data.data);
     } else {
-      toast.error(response.data.message);
-    }
-  };
-
-  const removeFood = async (id) => {
-    const response = await axios.delete(`${url}/api/food/remove/${id}`);
-    if (response.status === 200) {
-      toast.success(response.data.message);
-      fetchList();
-    } else {
-      toast.error(response.data.message);
+      toast.error(data.message);
     }
   };
   useEffect(() => {
@@ -44,14 +33,12 @@ const List = () => {
         </div>
         {list.map((item) => {
           return (
-            <div className="list-table-format" key={item._id}>
+            <div className="list-table-format" key={item.id}>
               <img src={`${url}/images/` + item.image} alt="" />
               <p>{item.name}</p>
               <p>{item.category}</p>
               <p>${item.price}</p>
-              <p className="cross" onClick={() => removeFood(item._id)}>
-                X
-              </p>
+              <button>Edit</button>
             </div>
           );
         })}

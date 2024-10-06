@@ -11,20 +11,10 @@ const List = () => {
     const response = await axios.get(`${url}/api/food/list`);
     const data = response.data;
     console.log(data);
-    if (response.status === 200) {
+    if (data.status === 200) {
       setList(data.data);
     } else {
-      toast.error(response.data.message);
-    }
-  };
-
-  const removeFood = async (id) => {
-    const response = await axios.delete(`${url}/api/food/remove/${id}`);
-    if (response.status === 200) {
-      toast.success(response.data.message);
-      fetchList();
-    } else {
-      toast.error(response.data.message);
+      toast.error(data.message);
     }
   };
   useEffect(() => {
@@ -42,16 +32,14 @@ const List = () => {
           <b>Price</b>
           <b>Action</b>
         </div>
-        {list.map((item) => {
+        {list.map((item, index) => {
           return (
-            <div className="list-table-format" key={item._id}>
-              <img src={`${url}/images/` + item.image} alt="" />
+            <div className="list-table-format" key={index}>
+              <img src={`${url}/${item.image}`} alt="" />
               <p>{item.name}</p>
               <p>{item.category}</p>
               <p>${item.price}</p>
-              <p className="cross" onClick={() => removeFood(item._id)}>
-                X
-              </p>
+              <button>Edit</button>
             </div>
           );
         })}

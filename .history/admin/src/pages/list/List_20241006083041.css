@@ -14,9 +14,6 @@
 .list-table-format img {
   width: 50px;
 }
-.cross {
-  cursor: pointer;
-}
 
 @media (max-width: 600px) {
   .list-table-format {
@@ -24,7 +21,6 @@
     gap: 15px;
   }
 
-  .list-table-format.list-table-format.title {
+  .list-table-format.list-table-format.title { 
     display: none;
-  }
 }

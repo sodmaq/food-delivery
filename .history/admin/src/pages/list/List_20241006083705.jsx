@@ -44,12 +44,12 @@ const List = () => {
         </div>
         {list.map((item) => {
           return (
-            <div className="list-table-format" key={item._id}>
+            <div className="list-table-format" key={item.id}>
               <img src={`${url}/images/` + item.image} alt="" />
               <p>{item.name}</p>
               <p>{item.category}</p>
               <p>${item.price}</p>
-              <p className="cross" onClick={() => removeFood(item._id)}>
+              <p className="cross" onClick={() => removeFood(item.id)}>
                 X
               </p>
             </div>

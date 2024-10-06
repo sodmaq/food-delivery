@@ -37,9 +37,9 @@ const Add = () => {
         price: "",
       });
       setImage(false);
-      toast.success(response.data.message);
+      toast.success("Food added successfully");
     } else {
-      toast.error(response.data.message);
+      console.log("error");
     }
   };
   return (

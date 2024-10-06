@@ -2,7 +2,6 @@ import { assets } from "../../assets/assets";
 import "./Add.css";
 import { useState } from "react";
 import axios from "axios";
-import { toast } from "react-toastify";
 
 const Add = () => {
   const url = "http://localhost:4000";
@@ -26,10 +25,10 @@ const Add = () => {
     formData.append("description", data.description);
     formData.append("category", data.category);
     formData.append("price", Number(data.price));
-    formData.append("image", image);
-    const response = await axios.post(`${url}/api/food/add`, formData);
+    FormData.append("image", image);
+    const response = await axios.post(`${url}/api/food`, FormData);
 
-    if (response.status === 200 || response.status === 201) {
+    if (response.status === success) {
       setData({
         name: "",
         description: "",
@@ -37,9 +36,8 @@ const Add = () => {
         price: "",
       });
       setImage(false);
-      toast.success(response.data.message);
     } else {
-      toast.error(response.data.message);
+      console.log("error");
     }
   };
   return (
