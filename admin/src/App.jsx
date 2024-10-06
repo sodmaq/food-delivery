@@ -7,6 +7,7 @@ import { Routes, Route } from "react-router-dom"; // Import Route
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const App = () => {
+  const url = "http://localhost:4000";
   return (
     <div>
       <NavBar />
@@ -15,10 +16,10 @@ const App = () => {
       <div className="app-content">
         <SideBar />
         <Routes>
-          <Route path="/add" element={<Add />} />{" "}
+          <Route path="/add" element={<Add url={url} />} />{" "}
           {/* Use Route for each path */}
-          <Route path="/list" element={<List />} />
-          <Route path="/order" element={<Order />} />
+          <Route path="/list" element={<List url={url} />} />
+          <Route path="/order" element={<Order url={url} />} />
         </Routes>
       </div>
     </div>
