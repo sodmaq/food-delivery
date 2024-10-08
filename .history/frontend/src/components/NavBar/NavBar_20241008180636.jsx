@@ -6,9 +6,9 @@ import { TiShoppingCart } from "react-icons/ti";
 import { Link } from "react-router-dom";
 import { StoreContext } from "../../context/storeContext";
 
-const NavBar = ({ setShowLogin }) => {
+const NavBar = ({ setShowLogin, token, setToken }) => {
   const [menu, setMenu] = useState("menu");
-  const { getTotalCartAmount, token, setToken } = useContext(StoreContext);
+  const { getTotalCartAmount } = useContext(StoreContext);
   return (
     <div className="navbar">
       <Link to={"/"}>
@@ -52,23 +52,7 @@ const NavBar = ({ setShowLogin }) => {
           </Link>
           <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>
         </div>
-        {!token ? (
-          <button onClick={() => setShowLogin(true)}>sign in</button>
-        ) : (
-          <div className="navbar-profile">
-            <img src={assets.profile_icon} alt="" />
-            <ul className="navbar-profile-dropdown">
-              <li>
-                <img src={assets.bag_icon} alt="" /> <p>Orders</p>
-              </li>
-              <hr />
-              <li>
-                <img src={assets.logout_icon} alt="" />
-                <p>Logout</p>
-              </li>
-            </ul>
-          </div>
-        )}
+        <button onClick={() => setShowLogin(true)}>sign in</button>
       </div>
     </div>
   );

@@ -77,18 +77,6 @@
   outline: 2px solid white;
   list-style: none;
 }
-.navbar-profile-dropdown li {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  cursor: pointer;
-}
-.navbar-profile-dropdown img {
-  width: 20px;
-}
-.navbar-profile-dropdown li:hover {
-  color: tomato;
-}
 
 @media (max-width: 1050px) {
   .navbar .logo {

@@ -44,8 +44,6 @@ const StoreContextProvider = ({ children }) => {
     removeFromCart,
     getTotalCartAmount,
     url,
-    token,
-    setToken,
   };
 
   return (

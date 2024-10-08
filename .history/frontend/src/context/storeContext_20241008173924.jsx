@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { food_list } from "../assets/assets";
 
 export const StoreContext = createContext(null);
@@ -44,8 +44,6 @@ const StoreContextProvider = ({ children }) => {
     removeFromCart,
     getTotalCartAmount,
     url,
-    token,
-    setToken,
   };
 
   return (
