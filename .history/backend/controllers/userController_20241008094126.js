@@ -1,10 +1,11 @@
-import userModel from "../models/userModel.js";
-import bcrypt from "bcrypt";
+import userModel from "../models/userModel";
+import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import validator from "validator";
 import "dotenv/config";
 
 //login user
+
 export const loginUser = async (req, res) => {
   const { email, password } = req.body;
   try {
@@ -18,7 +19,7 @@ export const loginUser = async (req, res) => {
       return res.json({ success: false, message: "Incorrect password" });
     }
 
-    const token = generateToken(user._id);
+    const token = token(user._id);
     res.json({ success: true, token });
   } catch (error) {
     console.log(error);
@@ -26,12 +27,12 @@ export const loginUser = async (req, res) => {
   }
 };
 
-// Token generation
-const generateToken = (id) => {
+const token = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: "1d" });
 };
 
 //register user
+
 export const registerUser = async (req, res) => {
   const { name, email, password } = req.body;
   try {
@@ -40,19 +41,19 @@ export const registerUser = async (req, res) => {
       return res.json({ success: false, message: "User already exists" });
     }
 
-    // Validate email
+    //validate email
     if (!validator.isEmail(email)) {
       return res.json({ success: false, message: "Invalid email" });
     }
 
-    if (password.length < 8) {
+    if (password.lenght < 8) {
       return res.json({
         success: false,
         message: "Password must be at least 8 characters",
       });
     }
 
-    // Hash password
+    //hash password
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
     const newUser = new userModel({
@@ -61,11 +62,12 @@ export const registerUser = async (req, res) => {
       password: hashedPassword,
     });
     await newUser.save();
-
-    const token = generateToken(newUser._id);
+    const token = token(newUser._id);
     res.json({ success: true, token, message: "User created successfully" });
   } catch (error) {
     console.log(error);
     res.json({ success: false, message: error.message });
   }
 };
+
+exports = { loginUser, registerUser };
