@@ -3,7 +3,7 @@ import "./NavBar.css";
 import { assets } from "../../assets/assets";
 import { CiSearch } from "react-icons/ci";
 import { TiShoppingCart } from "react-icons/ti";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { StoreContext } from "../../context/storeContext";
 
 const NavBar = ({ setShowLogin }) => {
@@ -13,7 +13,7 @@ const NavBar = ({ setShowLogin }) => {
   const logout = () => {
     localStorage.removeItem("token");
     setToken("");
-    navigate("/");
+    setShowLogin(true);
   };
   return (
     <div className="navbar">

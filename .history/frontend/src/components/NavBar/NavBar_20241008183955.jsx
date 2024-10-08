@@ -3,17 +3,17 @@ import "./NavBar.css";
 import { assets } from "../../assets/assets";
 import { CiSearch } from "react-icons/ci";
 import { TiShoppingCart } from "react-icons/ti";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { StoreContext } from "../../context/storeContext";
 
 const NavBar = ({ setShowLogin }) => {
   const [menu, setMenu] = useState("menu");
   const { getTotalCartAmount, token, setToken } = useContext(StoreContext);
-  const navigate = useNavigate();
+  const navigate = u;
   const logout = () => {
     localStorage.removeItem("token");
     setToken("");
-    navigate("/");
+    setShowLogin(true);
   };
   return (
     <div className="navbar">
