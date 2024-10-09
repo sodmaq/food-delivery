@@ -8,7 +8,6 @@ const StoreContextProvider = ({ children }) => {
   const url = "http://localhost:4000";
   const [token, setToken] = useState("");
   const [food_list, setFoodList] = useState([]);
-
   const addToCart = (id) => {
     if (!cartItems[id]) {
       setCartItems((prev) => ({ ...prev, [id]: 1 }));
@@ -16,7 +15,6 @@ const StoreContextProvider = ({ children }) => {
       setCartItems((prev) => ({ ...prev, [id]: prev[id] + 1 }));
     }
   };
-
   const removeFromCart = (id) => {
     setCartItems((prev) => {
       if (prev[id] === 1) {
@@ -40,12 +38,10 @@ const StoreContextProvider = ({ children }) => {
   };
 
   const fetchFoodList = async () => {
-    try {
-      const response = await axios.get(`${url}/api/food/list`);
-      setFoodList(response.data.data);
-    } catch (error) {
-      console.error("Error fetching food list:", error);
-    }
+    const response = await axios.get(`${url}/api/food/list`);
+    console.log("this is response", response);
+    console.log(response.data.data.data);
+    setFoodList(response.data.data);
   };
 
   useEffect(() => {

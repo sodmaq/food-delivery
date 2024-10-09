@@ -58,6 +58,8 @@ const StoreContextProvider = ({ children }) => {
     LoadData();
   }, []);
 
+  useEffect(() => {}, [food_list]); // This runs whenever food_list changes
+
   const contextValue = {
     food_list,
     cartItems,

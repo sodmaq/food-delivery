@@ -1,10 +1,12 @@
+import React, { useContext } from "react";
 import "./FoodDisplay.css";
 import { StoreContext } from "../../context/storeContext";
 import FoodItem from "../foodItem/FoodItem";
-import { useContext } from "react";
 
 const FoodDisplay = ({ category }) => {
   const { food_list } = useContext(StoreContext);
+  console.log("Current category:", category); // Log the category being filtered
+  console.log("Food list:", food_list); // Log the food list to see its contents
 
   return (
     <div className="food-display" id="food-display">

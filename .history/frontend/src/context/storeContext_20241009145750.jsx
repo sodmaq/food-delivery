@@ -58,6 +58,10 @@ const StoreContextProvider = ({ children }) => {
     LoadData();
   }, []);
 
+  useEffect(() => {
+    console.log("Fetched food list:", food_list); // Log the food list after fetching
+  }, [food_list]); // This runs whenever food_list changes
+
   const contextValue = {
     food_list,
     cartItems,
