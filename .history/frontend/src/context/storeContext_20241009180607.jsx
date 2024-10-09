@@ -59,15 +59,6 @@ const StoreContextProvider = ({ children }) => {
     }
   };
 
-  const loadCartData = async () => {
-    try {
-      const response = await axios.get(`${url}/api/cart`);
-      setCartItems(response.data.data);
-    } catch (error) {
-      console.error("Error fetching cart data:", error);
-    }
-  };
-
   useEffect(() => {
     async function LoadData() {
       await fetchFoodList();

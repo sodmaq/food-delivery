@@ -20,7 +20,7 @@ const StoreContextProvider = ({ children }) => {
     }
   };
 
-  const removeFromCart = async (id) => {
+  const removeFromCart = (id) => {
     setCartItems((prev) => {
       if (prev[id] === 1) {
         const newCart = { ...prev };
@@ -29,13 +29,6 @@ const StoreContextProvider = ({ children }) => {
       }
       return { ...prev, [id]: prev[id] - 1 };
     });
-    if (token) {
-      await axios.delete(
-        `${url}/api/cart/remove/${id}`,
-        { id },
-        { headers: { token } }
-      );
-    }
   };
 
   const getTotalCartAmount = () => {
@@ -46,7 +39,6 @@ const StoreContextProvider = ({ children }) => {
         totalAmount += itemInfo.price * cartItems[item];
       }
     }
-
     return totalAmount;
   };
 
@@ -56,15 +48,6 @@ const StoreContextProvider = ({ children }) => {
       setFoodList(response.data.data);
     } catch (error) {
       console.error("Error fetching food list:", error);
-    }
-  };
-
-  const loadCartData = async () => {
-    try {
-      const response = await axios.get(`${url}/api/cart`);
-      setCartItems(response.data.data);
-    } catch (error) {
-      console.error("Error fetching cart data:", error);
     }
   };
 

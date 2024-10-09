@@ -46,7 +46,6 @@ const StoreContextProvider = ({ children }) => {
         totalAmount += itemInfo.price * cartItems[item];
       }
     }
-
     return totalAmount;
   };
 
@@ -56,15 +55,6 @@ const StoreContextProvider = ({ children }) => {
       setFoodList(response.data.data);
     } catch (error) {
       console.error("Error fetching food list:", error);
-    }
-  };
-
-  const loadCartData = async () => {
-    try {
-      const response = await axios.get(`${url}/api/cart`);
-      setCartItems(response.data.data);
-    } catch (error) {
-      console.error("Error fetching cart data:", error);
     }
   };
 
