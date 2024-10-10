@@ -31,13 +31,10 @@ const StoreContextProvider = ({ children }) => {
     });
 
     if (token) {
-      await axios.post(
-        `${url}/api/cart/remove`, // Updated to POST request
-        { id }, // Pass both userId and id in the request body
-        {
-          headers: { token },
-        }
-      );
+      await axios.delete(`${url}/api/cart/remove`, {
+        data: { id }, // Correctly pass the id in the request body
+        headers: { Authorization: `Bearer ${token}` },
+      });
     }
   };
 
@@ -62,17 +59,9 @@ const StoreContextProvider = ({ children }) => {
     }
   };
 
-  const loadCartData = async (token) => {
+  const loadCartData = async () => {
     try {
-      const response = await axios.post(
-        `${url}/api/cart`,
-        {}, // Empty request body
-        {
-          headers: {
-            token, // Pass token here
-          },
-        }
-      );
+      const response = await axios.get(`${url}/api/cart`);
       setCartItems(response.data.data);
     } catch (error) {
       console.error("Error fetching cart data:", error);
@@ -82,10 +71,8 @@ const StoreContextProvider = ({ children }) => {
   useEffect(() => {
     async function LoadData() {
       await fetchFoodList();
-      const savedToken = localStorage.getItem("token");
-      if (savedToken) {
-        setToken(savedToken);
-        await loadCartData(savedToken); // Pass token
+      if (localStorage.getItem("token")) {
+        setToken(localStorage.getItem("token"));
       }
     }
     LoadData();

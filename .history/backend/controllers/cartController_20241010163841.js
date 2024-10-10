@@ -52,15 +52,12 @@ const removeFromCart = async (req, res) => {
 //fetch user cart
 const getCart = async (req, res) => {
   try {
-    // Assuming userId is attached to req.user by authMiddleware
-    let userData = await userModel.findById(req.user.id);
-
-    // Assuming cartData is a field in userData and not a method
-    let cartData = userData.cartData;
+    let userData = await userModel.findById(req.body.userId);
+    let cartData = await userData.cartData;
     res.json({ success: true, data: cartData });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ success: false, message: error.message });
+    res.json({ success: false, message: error.message });
   }
 };
 
