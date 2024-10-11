@@ -47,11 +47,8 @@ const placeOrder = async (req, res) => {
       success_url: `${frontend_url}/verify?success=true&orderId=${newOrder._id}`,
       cancel_url: `${frontend_url}/verify?success=false&orderId=${newOrder._id}`,
     });
-    res.json({ success: true, session_url: session.url });
-  } catch (error) {
-    console.log(error);
-    res.json({ success: false, message: error.message });
-  }
+    res.json({ url: session.url });
+  } catch (error) {}
 };
 
 export default { placeOrder };
